@@ -1,0 +1,92 @@
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\ClinicMS.dll
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\ClinicMS.pdb
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\Newtonsoft.Json.dll
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.Buffers.dll
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.Memory.dll
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.Net.Http.Formatting.dll
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.Numerics.Vectors.dll
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.Text.Encodings.Web.dll
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.Text.Json.dll
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.Threading.Tasks.Extensions.dll
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.ValueTuple.dll
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.Web.Cors.dll
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.Web.Http.Cors.dll
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.Web.Http.dll
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.Web.Http.WebHost.dll
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\Microsoft.IdentityModel.Abstractions.xml
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\Microsoft.IdentityModel.Logging.xml
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\Newtonsoft.Json.xml
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.Buffers.xml
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.Memory.xml
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.Net.Http.Formatting.xml
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.Numerics.Vectors.xml
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.Text.Encodings.Web.xml
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.Text.Json.xml
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.ValueTuple.xml
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.Web.Http.xml
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.Web.Http.Cors.xml
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\bin\System.Web.Http.WebHost.xml
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\obj\Debug\ClinicMS.csproj.AssemblyReference.cache
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\obj\Debug\ClinicMS.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\obj\Debug\ClinicMS.csproj.CopyComplete
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\obj\Debug\ClinicMS.dll
+C:\Users\Lenovo\Downloads\project1\NEW_BACKEND\ClinicMS\obj\Debug\ClinicMS.pdb
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\ClinicMS.dll
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\ClinicMS.pdb
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\Newtonsoft.Json.dll
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.Buffers.dll
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.Memory.dll
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.Net.Http.Formatting.dll
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.Numerics.Vectors.dll
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.Text.Encodings.Web.dll
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.Text.Json.dll
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.Threading.Tasks.Extensions.dll
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.ValueTuple.dll
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.Web.Cors.dll
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.Web.Http.Cors.dll
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.Web.Http.dll
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.Web.Http.WebHost.dll
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\Microsoft.IdentityModel.Abstractions.xml
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\Microsoft.IdentityModel.Logging.xml
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\Newtonsoft.Json.xml
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.Buffers.xml
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.Memory.xml
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.Net.Http.Formatting.xml
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.Numerics.Vectors.xml
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.Text.Encodings.Web.xml
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.Text.Json.xml
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.ValueTuple.xml
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.Web.Http.xml
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.Web.Http.Cors.xml
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\bin\System.Web.Http.WebHost.xml
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\obj\Debug\ClinicMS.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\obj\Debug\ClinicMS.csproj.CopyComplete
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\obj\Debug\ClinicMS.dll
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\obj\Debug\ClinicMS.pdb
+C:\Users\Lenovo\Downloads\project1 - Copy\NEW_BACKEND\ClinicMS\obj\Debug\ClinicMS.csproj.AssemblyReference.cache
