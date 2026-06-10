@@ -1,0 +1,500 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Data;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+using System.Configuration;
+using System.Collections;
+using System.Drawing;
+ 
+public partial class Pathology_TestMaster : System.Web.UI.Page
+{
+    PH_TestMaster thetest = new PH_TestMaster(ConfigurationSettings.AppSettings["ConnectionString"].ToString());
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+        Page.Title = "Test Master";
+        if (Session["userName"] == null)
+        {
+            Response.Redirect("../LoginPage.aspx");
+        }
+        if (!IsPostBack)
+        {
+            RadioButtonList1.SelectedValue = "Single Parameter";
+            Panel2.Visible = false;
+            Panel3.Visible = false;
+            Panel4.Visible = false;
+            Panel1.Visible = false;
+            Panel5.Visible = false; Panel6.Visible = false;
+            DropDownFill();
+        }
+    }
+    public void GetTestCode()
+    {
+        
+        if (DropDownList1.SelectedValue == "D0001")
+        {
+            DataTable dt = thetest.GetTestCode();
+            txtcode.Text = dt.Rows[0][0].ToString();
+        }
+        else
+        {
+            DataTable dt = thetest.GetXRayCode();
+            txtcode.Text = dt.Rows[0][0].ToString();
+        }
+    }
+ 
+    protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (RadioButtonList1.SelectedValue == "Dual Parameter")
+        {
+            Panel2.Visible = true;
+            Panel1.Visible = false;
+            Panel3.Visible = false;
+            Panel4.Visible = false;
+            lblError.Text = "";
+            GetTestCode();
+        }
+        else
+        {
+            if (RadioButtonList1.SelectedValue == "Multiple Parameter")
+            {
+                Panel3.Visible = true;
+                Panel1.Visible = false;
+                Panel2.Visible = false;
+                Panel4.Visible = false;
+                lblError.Text = "";
+                GetTestCode();
+                
+            }
+            else
+            {
+                if (RadioButtonList1.SelectedValue == "Complex Parameter")
+                {
+                    Panel1.Visible = false;
+                    Panel2.Visible = false;
+                    Panel3.Visible = false;
+                    Panel4.Visible = true;
+                    GetTestCode();
+                }
+                else
+                {
+                    if (RadioButtonList1.SelectedValue == "Single Parameter")
+                    {
+                        Panel1.Visible = true;
+                        Panel2.Visible = false;
+                        Panel3.Visible = false;
+                        Panel4.Visible = false;
+                        GetTestCode();
+                    }
+                }
+            }
+        }
+       
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+         if (Button1.Text == "Submit")
+        {
+            thetest.InsertDialysisCharge(DropDownList1.SelectedValue, txtcode.Text, "1", txtname.Text, txtcost.Text, TextBox3.Text, Session["username"].ToString());
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "msg", "alert('Inserted Successfully !');", true);
+        }
+        else
+        {
+            thetest.UpdateSimpleTest(txtcode.Text, txtname.Text, txtcost.Text, TextBox3.Text, DropDownList1.SelectedValue);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "msg", "alert('Updated Successfully !');", true);
+            Button1.Text = "Submit";
+        }
+        ResetAllFields();
+    }
+    public void ResetAllFields()
+    {
+        GetTestCode();
+        DropDownList1.SelectedIndex = 0;
+        txtcost.Text = ""; txtname.Text = "";
+        RadioButtonList1.SelectedValue = "Single Parameter";
+        TextBox3.Text = "";
+        DropDownList3.SelectedIndex = 0; TextBox2.Text = "";
+        TextBox t;
+        for (int j = 19; j <= 38; j++)
+        {
+            t = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + j.ToString());
+            t.Text = "";
+        }
+        for (int j = 501; j <= 588; j++)
+        {
+            t = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + j.ToString());
+            t.Text = "";
+        }
+        for (int j = 110; j <= 309; j++)
+        {
+            t = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + j.ToString());
+            t.Text = "";
+        }
+       
+    }
+    private void DropDownFill()
+    {
+         this.DropDownList1.DataSource = thetest.DropdownDepartment();
+        this.DropDownList1.DataTextField = "DeptName";
+        this.DropDownList1.DataValueField = "DeptCode";
+        this.DropDownList1.DataBind();
+        this.DropDownList1.Items.Insert(0, new ListItem("--Select--", "0"));
+
+
+        DropDownList3.DataSource = thetest.DropdownTemplate("");
+        DropDownList3.DataTextField = "TemplateName";
+        DropDownList3.DataValueField = "TemplateID";
+        DropDownList3.DataBind();
+        DropDownList3.Items.Insert(0, new ListItem("--Select--", "0"));
+    }
+protected void Button6_Click(object sender, EventArgs e)
+{
+     if (Button6.Text == "Submit")
+    {
+        thetest.InsertDialysisCharge(DropDownList1.SelectedValue,txtcode.Text, "2", txtname.Text, txtcost.Text, "", Session["username"].ToString());
+
+        TextBox t1, t2;
+        for (int i = 19; i <= 37; i = i + 2)
+        {
+            t1 = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + i.ToString()); // this will be the clientid of the textbox
+            t2 = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + (i + 1).ToString());
+            DataTable dt21 = thetest.GenerateMulCode();
+            if (t1.Text == "")
+                continue;
+                thetest.InsertMultipleTest(txtcode.Text, dt21.Rows[0][0].ToString(), t1.Text, t2.Text);
+        }
+
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "msg", "alert('Inserted Successfully !');", true);
+
+    }
+    else
+    {
+        thetest.UpdateSimpleTest(txtcode.Text, txtname.Text, txtcost.Text, TextBox3.Text,DropDownList1.SelectedValue);
+        thetest.DeleteTestMasterMultiple(txtcode.Text);
+        TextBox t1, t2;
+        for (int i = 19; i <= 37; i = i + 2)
+        {
+            t1 = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + i.ToString()); // this will be the clientid of the textbox
+            t2 = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + (i + 1).ToString());
+            DataTable dt21 = thetest.GenerateMulCode();
+            if (t1.Text == "")
+                continue;
+            thetest.InsertMultipleTest(txtcode.Text, dt21.Rows[0][0].ToString(), t1.Text, t2.Text);
+        }
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "msg", "alert('Updated Successfully !');", true);
+    }
+    ResetAllFields();
+}
+
+protected void Button3_Click(object sender, EventArgs e)
+{
+     DataTable dt = thetest.GetDetails(txtcode.Text);
+ 
+    DropDownList1.SelectedValue = dt.Rows[0]["DepertmentID"].ToString();
+    txtname.Text = dt.Rows[0]["TestName"].ToString();
+    txtcost.Text = dt.Rows[0]["Cost"].ToString();
+    if (dt.Rows[0]["TestType"].ToString() == "")
+    {
+        DropDownList3.SelectedValue = dt.Rows[0]["TemplateId"].ToString();
+        TextBox2.Text = dt.Rows[0]["Template"].ToString();
+        Panel5.Visible = true;
+        Panel1.Visible = false;
+        Panel2.Visible = false;
+        Panel3.Visible = false;
+        Panel4.Visible = false;
+        Button10.Text = "Update";
+    }
+    if (dt.Rows[0]["TestType"].ToString() == "1")
+    {
+        RadioButtonList1.SelectedValue = "Single Parameter";
+        Panel1.Visible = true;
+        Panel2.Visible = false;
+        Panel3.Visible = false;
+        Panel4.Visible = false;
+        Panel5.Visible = false;
+       
+        TextBox3.Text = dt.Rows[0]["NormalRange"].ToString();
+        Button1.Text = "Update";
+    }
+    if (dt.Rows[0]["TestType"].ToString() == "2")
+    {
+        DataTable dt1 = thetest.GetMulDetails(txtcode.Text);
+        RadioButtonList1.SelectedValue = "Dual Parameter";
+        Panel1.Visible = false;
+        Panel2.Visible = true;
+        Panel3.Visible = false;
+        Panel4.Visible = false;
+        Panel5.Visible = false;
+      
+        TextBox t1,t2;
+        HiddenField h;
+        
+        for (int i = 0,t=19; i < dt1.Rows.Count; i++,t=t+2)
+        {
+            t1 = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + t.ToString());
+            t2 = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + (t + 1).ToString());
+            h = (HiddenField)Page.FindControl("ctl00$ContentPlaceHolder1$HiddenField" + (i + 1).ToString());
+            t1.Text = dt1.Rows[i]["SubHeading"].ToString();
+            t2.Text = dt1.Rows[i]["NormalRange"].ToString();
+            h.Value = dt1.Rows[i]["MultipleId"].ToString();
+        }
+      
+         Button6.Text = "Update";
+   
+    }
+    if (dt.Rows[0]["TestType"].ToString() == "3")
+    {
+      
+        RadioButtonList1.SelectedValue = "Multiple Parameter";
+        Panel1.Visible = false;
+        Panel2.Visible = false;
+        Panel3.Visible = true;
+        Panel4.Visible = false; Panel5.Visible = false;
+        TextBox t1, t2,t3,t4;
+        HiddenField h;
+        int v1, v2;
+        v1 = 1;
+        v2 = 2;
+        DataTable dt1 = thetest.GetMultipleDetails(txtcode.Text);
+        for (int i = 0, t = 501; i < dt1.Rows.Count; i++, t = t + 22)
+        {
+            t1 = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + t.ToString());
+            t2 = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + (t + 1).ToString());
+            h = (HiddenField)Page.FindControl("ctl00$ContentPlaceHolder1$HiddenField" + v1.ToString());
+            t1.Text = dt1.Rows[i]["SubHeading"].ToString();
+            t2.Text = dt1.Rows[i]["NormalRange"].ToString();
+            h.Value = dt1.Rows[i]["MultipleId"].ToString();
+            DataTable dt2 = thetest.GetComplexDetails1(dt1.Rows[i]["MultipleId"].ToString());
+            if (dt2.Rows.Count != 0)
+            {
+                for (int j = 0, tn = t + 2; j < dt2.Rows.Count; j++, tn = tn + 2)
+                {
+                    t3 = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + tn.ToString());
+                    t4 = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + (tn + 1).ToString());
+                    h = (HiddenField)Page.FindControl("ctl00$ContentPlaceHolder1$HiddenField" + v2.ToString());
+                    t3.Text = dt2.Rows[j]["SubHeading"].ToString();
+                    t4.Text = dt2.Rows[j]["NormalRange"].ToString();
+                    h.Value = dt2.Rows[j]["ComplexId"].ToString();
+                    v1++;
+                    v2++;
+                }
+                v1 = v1 + 2;
+            }
+            else
+            {
+                v1++;
+            }
+
+
+        }
+        Button12.Text = "Update";
+    }
+
+
+    if (dt.Rows[0]["TestType"].ToString() == "4")
+    {
+        RadioButtonList1.SelectedValue = "Complex Parameter";
+        Panel1.Visible = false;
+        Panel2.Visible = false;
+        Panel3.Visible = false;
+        Panel4.Visible = true; Panel5.Visible = false;
+
+        TextBox t1, t2, t3, t4;
+        HiddenField h;
+        int v1 ;
+        v1 = 0;
+        //v2 = 2;
+        //v3 = 3;
+        DataTable dt1 = thetest.GetMultipleDetails(txtcode.Text);
+        for (int i = 0, t = 110; i < dt1.Rows.Count; i++, t = t + 50)
+        {
+            v1++;
+            t1 = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + t.ToString());
+            t2 = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + (t + 1).ToString());
+            h = (HiddenField)Page.FindControl("ctl00$ContentPlaceHolder1$HiddenField" + v1.ToString());
+            t1.Text = dt1.Rows[i]["SubHeading"].ToString();
+            t2.Text = dt1.Rows[i]["NormalRange"].ToString();
+            h.Value = dt1.Rows[i]["MultipleId"].ToString();
+            string ad= HiddenField2.Value.ToString();
+            DataTable dt2 = thetest.GetComplexDetails1(dt1.Rows[i]["MultipleId"].ToString());
+            if (dt2.Rows.Count != 0)
+            {
+                for (int j = 0, tn = t + 2; j < dt2.Rows.Count; j++, tn = tn + 12)
+                {
+                    v1++;
+                    t3 = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + tn.ToString());
+                    t4 = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + (tn + 1).ToString());
+                    h = (HiddenField)Page.FindControl("ctl00$ContentPlaceHolder1$HiddenField" + v1.ToString());
+                    t3.Text = dt2.Rows[j]["SubHeading"].ToString();
+                    t4.Text = dt2.Rows[j]["NormalRange"].ToString();
+                    h.Value = dt2.Rows[j]["ComplexId"].ToString();
+                    DataTable dt5 = thetest.GetDuplexDetails1(dt2.Rows[j]["ComplexId"].ToString());
+                    if (dt5.Rows.Count != 0)
+                    {
+                        for (int k = 0, td = tn + 2; k < dt5.Rows.Count; k++, td = td + 2)
+                        {
+                            v1++;
+                            t3 = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + td.ToString());
+                            t4 = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + (td + 1).ToString());
+                            h = (HiddenField)Page.FindControl("ctl00$ContentPlaceHolder1$HiddenField" + v1.ToString());
+                            t3.Text = dt5.Rows[k]["SubHeading"].ToString();
+                            t4.Text = dt5.Rows[k]["NormalRange"].ToString();
+                            h.Value = dt5.Rows[k]["DuplexId"].ToString();
+                        }
+                       
+                    }
+
+                }
+               
+            }
+      
+
+        }
+       string ab= HiddenField1.Value.ToString();
+       string abc = HiddenField2.Value.ToString();
+
+     
+        Button30.Text = "Update";
+    }
+}
+    public void insertcomplex()
+    {
+            TextBox t1; 
+        TextBox t2; 
+        TextBox t3;
+        TextBox t4;
+        for (int i = 501; i <= 587; i = i + 22)
+        {
+            t1 = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + i.ToString()); // this will be the clientid of the textbox
+            t2 = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + (i + 1).ToString());
+            DataTable dt21 = thetest.GenerateMulCode();
+            if (t1.Text == "")
+                continue;
+                thetest.InsertMultipleTest(txtcode.Text, dt21.Rows[0][0].ToString(), t1.Text, t2.Text);
+         
+            for (int j = i + 2; j < i + 22; j = j + 2)
+            {
+                t3 = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + j.ToString()); // this will be the clientid of the textbox
+                t4 = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + (j + 1).ToString());
+                DataTable dt1 = thetest.GenerateComplexCode();
+                if (t3.Text == "")
+                    continue;
+                    thetest.InsertcomplexTest(dt1.Rows[0][0].ToString(), dt21.Rows[0][0].ToString(), txtcode.Text, t3.Text, t4.Text);
+               
+            }
+
+        }
+    }
+protected void Button12_Click(object sender, EventArgs e)
+{
+     if (Button12.Text == "Submit")
+    {
+        thetest.InsertDialysisCharge(DropDownList1.SelectedValue, txtcode.Text, "3", txtname.Text, txtcost.Text, "", Session["username"].ToString());
+        insertcomplex();
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "msg", "alert('Inserted Successfully !');", true);
+    }
+    else
+    {
+        thetest.UpdateSimpleTest(txtcode.Text, txtname.Text, txtcost.Text, TextBox3.Text,DropDownList1.SelectedValue);
+        thetest.DeleteTestMasterMultiple(txtcode.Text);
+        thetest.DeleteTestMasterComplex(txtcode.Text);
+        insertcomplex();
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "msg", "alert('Updated Successfully !');", true);
+    }
+    ResetAllFields();
+}
+public void insertduplex()
+{
+    TextBox t1, t2, t3, t4, t5, t6;
+    for (int i = 110; i <= 260; i = i + 50)
+    {
+        t1 = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + i.ToString()); // this will be the clientid of the textbox
+        t2 = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + (i + 1).ToString());
+        DataTable dt21 = thetest.GenerateMulCode();
+        if (t1.Text == "")
+            continue;
+        thetest.InsertMultipleTest(txtcode.Text, dt21.Rows[0][0].ToString(), t1.Text, t2.Text);
+
+        for (int j = i + 2; j < i + 48; j = j + 12)
+        {
+            t3 = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + j.ToString()); // this will be the clientid of the textbox
+            t4 = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + (j + 1).ToString());
+            DataTable dt1 = thetest.GenerateComplexCode();
+            if (t3.Text == "")
+                continue;
+            thetest.InsertcomplexTest(dt1.Rows[0][0].ToString(), dt21.Rows[0][0].ToString(), txtcode.Text, t3.Text, t4.Text);
+
+            for (int k = j + 2; k < j + 10; k = k + 2)
+            {
+                t5 = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + k.ToString()); // this will be the clientid of the textbox
+                t6 = (TextBox)Page.FindControl("ctl00$ContentPlaceHolder1$TextBox" + (k + 1).ToString());
+                DataTable dt2 = thetest.GenerateDuplexCode();
+                if (t5.Text == "")
+                    continue;
+                thetest.InsertduplexTest(dt2.Rows[0][0].ToString(), txtcode.Text, dt21.Rows[0][0].ToString(), dt1.Rows[0][0].ToString(), t5.Text, t6.Text);
+
+            }
+
+        }
+
+    }
+}
+protected void Button30_Click(object sender, EventArgs e)
+{
+     if (Button30.Text == "Submit")
+    {
+        thetest.InsertDialysisCharge(DropDownList1.SelectedValue, txtcode.Text, "4", txtname.Text, txtcost.Text, "", Session["username"].ToString());
+        insertduplex();
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "msg", "alert('Inserted Successfully !');", true);
+    }
+    else
+    {
+        thetest.UpdateSimpleTest(txtcode.Text, txtname.Text, txtcost.Text, TextBox3.Text, DropDownList1.SelectedValue);
+
+        thetest.DeleteTestMasterMultiple(txtcode.Text);
+        thetest.DeleteTestMasterComplex(txtcode.Text);
+        thetest.DeleteTestMasterDuplex(txtcode.Text);
+        insertduplex();
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "msg", "alert('Updated Successfully !');", true);
+    }
+   ResetAllFields();
+}
+protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+{
+    GetTestCode();
+    if (DropDownList1.SelectedValue.ToString() == "D0001")
+    {
+        Panel1.Visible = true; Panel6.Visible = true;
+        Panel2.Visible = false; Panel3.Visible = false; Panel4.Visible = false; Panel5.Visible = false;
+    }
+    else
+    {
+        Panel5.Visible = true; Panel2.Visible = false; Panel3.Visible = false; Panel4.Visible = false; Panel1.Visible = false;
+    }
+}
+protected void Button10_Click(object sender, EventArgs e)
+{
+     if (Button10.Text == "Submit")
+    {
+        thetest.InsertXRay(DropDownList1.SelectedValue, txtcode.Text, txtname.Text, txtcost.Text, DropDownList3.SelectedValue, Session["username"].ToString());
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "msg", "alert('Inserted Successfully !');", true);
+    }
+    else
+    {
+        thetest.UpdateXray(DropDownList1.SelectedValue, txtcode.Text, txtname.Text, txtcost.Text, DropDownList3.SelectedValue);
+        ScriptManager.RegisterStartupScript(this, this.GetType(), "msg", "alert('Updated Successfully !');", true);
+    }
+    ResetAllFields();
+}
+protected void DropDownList3_SelectedIndexChanged(object sender, EventArgs e)
+{
+    DataTable dt = thetest.DropdownTemplate(DropDownList3.SelectedValue);
+    TextBox2.Text = dt.Rows[0]["Template"].ToString();
+}
+}

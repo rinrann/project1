@@ -1,0 +1,595 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Welcome to GFC Hospital</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
+    <link type="text/css" href="../css/calendar-blue.css" rel="stylesheet" />
+
+
+    <%--<link href="css/Master.css" rel="stylesheet" type="text/css" />--%>
+    <script src="../Script/jquery.webcam.js" type="text/javascript"></script>
+
+
+    <script src="../Script/ScrollableGridViewPlugin_ASP.NetAJAXmin.js" type="text/javascript"></script>
+    <script src="../Script/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="../Script/jquery.dynDateTime.min.js" type="text/javascript"></script>
+    <script src="../Script/calendar-en.min.js" type="text/javascript"></script>
+    <script src="../js/jquery-1.9.1.js" type="text/javascript"></script>
+    <link href="../js/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script src="../js/jquery-ui.js" type="text/javascript"></script>
+    <link type="text/css" href="../css/jquery-ui-1.8.19.custom.css" rel="stylesheet" />
+    <script type="text/javascript" src="../Script/jquery-ui-1.8.19.custom.min.js"></script>
+    <script src="../Script/jquery-1.3.1.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../Script/menu.js"></script>
+
+
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
+
+        <div id="inner-pagebg">
+            <div class="headernewimg">
+                <div class="inner-banner" align="center">
+                    <%--<img src="images/bannerheader.png" width="1000" height="145" />--%>
+                    <div class="welcome-sec">Welcome:
+                        <asp:Label ID="lblWelcome" runat="server" Text="Label"></asp:Label></div>
+                    <div class="logout">
+                        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">LogOut</asp:LinkButton>
+                    </div>
+                </div>
+            </div>
+            <div class="wrapper">
+                <div class="nav-area">
+
+                    <%--  From here all codes are commented --%>
+                    <ul id="nav">
+                        <li><a href="../HomePage.aspx">HOME</a></li>
+                        <%--<li><a href="#">IPD UNIT</a>
+                	        <ul>
+                	          <li><a href="#">IPD MASTER</a>
+                                    <ul>                
+                                        <li><a href="IPD/TestMaster.aspx">TEST MASTER</a></li>    	  
+                                         <li><a href="OPD/DoseMaster.aspx">DOSE MASTER</a></li>  
+                                         <li><a href="IPD/DurationMaster.aspx">DURATION MASTER</a></li>    	                
+            	                         <li><a href="IPD/FloorMaster.aspx">FLOOR MASTER</a></li>  
+                                        <li><a href="IPD/WingsMaster.aspx">WINGS MASTER</a></li>
+                	                    <li><a href="IPD/RoomType.aspx">ROOM TYPE</a></li>
+                                        <li><a href="IPD/RoomMaster.aspx">ROOM MASTER</a></li>
+                                        <li><a href="IPD/BedMaster.aspx">BED MASTER</a></li>  
+                                      
+                                        <li><a href="IPD/DoctorSpecialty.aspx">DOCTORS SPECIALITY</a></li>
+                                        <li><a href="IPD/DoctorType.aspx">DOCTOR TYPE</a></li>
+                                        <li><a href="IPD/doc_master.aspx">DOCTOR MASTER</a></li>
+                                        <li><a href="IPD/quack_master.aspx">QUACK MASTER</a></li>
+                                            <li><a href="IPD/ConsumableSubGroup.aspx">CONSUMABLE GROUP</a></li>
+                                            <li><a href="IPD/ConsumableItems.aspx">CONSUMABLE ITEMS</a></li>   
+                                        <li><a href="IPD/ServiceTemplateCategory.aspx">SER & CONS TEMPLATE GROUP</a></li>
+                                        <li><a href="IPD/ServiceTemplate.aspx">SER & CONS TEMPLATE</a></li>
+                                         
+
+                                             <li><a href="IPD/OperationType.aspx">OPERATION TYPE</a></li>
+                                            <li><a href="IPD/OperationDetails.aspx">OPERATION DETAILS</a></li>
+                   
+                                        
+                                          <li><a href="IPD/InstrumentSubGroup.aspx">INSTRUMENT SUB GROUP</a></li> 
+                                        <li><a href="IPD/InstrumentMaster.aspx">INSTRUMENT MASTER</a></li> 
+                                          <li><a href="IPD/Discipline.aspx">DISCIPLINE MASTER</a></li> 
+                                          <li><a href="IPD/DiagnosisMaster.aspx">DIAGNOSIS MASTER</a></li> 
+                                              <li><a href="IPD/DailyRecordMaster.aspx">DAILY RECORD MASTER</a></li>
+                                       <li><a href="IPD/MedicineRoute.aspx">MEDICINE ROUTE</a></li>                                         
+                                         <li><a href="IPD/Center_Master.aspx">SISTER / AYA CENTRE</a></li>
+                                        <li><a href="IPD/SisterCharges.aspx">SISTER / AYA CHARGES</a></li>  
+                                        <li><a href="IPD/ReportMaster.aspx">REPORT MASTER</a></li>  
+                                        <li><a href="IPD/OperationTemplate.aspx">OPERATION & CONS TEMPLATE </a></li>
+                                        <li><a href="IPD/ImplantMaster.aspx">Implant Master </a></li>
+                                        <li><a href="IPD/CarMaster.aspx">CAR DETAILS </a></li>
+                                    </ul>
+                                </li>
+
+                                 <li><a href="#">RECEPTION</a>
+                                    <ul>
+                                           <li><a href="IPD/PatientAdmission.aspx">PATIENT ADMISSION</a></li>
+                                     <li><a href="IPD/ReceptionPatientList.aspx">PATIENT SUMMARY</a></li> 
+                                    <li><a href="IPD/Bedavaibility.aspx">BED AVAILABILITY</a></li>                    	     
+            	                    <li><a href="IPD/BedTransfer.aspx">BED TRANSFER</a></li> 
+                                    <li><a href="IPD/RecallPatient.aspx">PATIENT RECALL</a></li>  
+                                    </ul>
+                                </li>
+
+                                
+                                 <li><a href="#">WARD MANAGEMENT</a>
+                                    <ul>
+                    	                
+                                        <li><a href="IPD/ReceptionPatientList.aspx">PATIENT SUMMARY</a></li> 
+                                        <li><a href="IPD/AdmissionPatientList.aspx">PATIENT DASH BOARD</a></li> 
+                                        <li><a href="IPD/AllDoctorVisit.aspx">ALL DOCTOR VISIT</a></li>
+                                        <li><a href="IPD/AddServices.aspx">ADD SERVICES</a></li>
+                                        <li><a href="IPD/InstrumentCost.aspx?type=S">SERVICE INSTRUMENT COST</a></li>
+                                        <li><a href="IPD/AddConsumable.aspx">ADD CONSUMABLE</a></li> 
+                                        <li><a href="IPD/AddMedicine.aspx">ADD MEDICINE</a></li> 
+                                        <li><a href="IPD/DailyCheckupRecord.aspx">BHT RECORD</a></li>
+                	                    <li><a href="IPD/Sister_Aya_Charges.aspx">PATIENT SISTER/AYA SERVICES</a></li>   
+                                        <li><a href="IPD/AmbulanceCharge.aspx">AMBULANCE SERVICES</a></li> 
+                                        <li><a href="IPD/OthersCharge.aspx">OTHERS CHARGES</a></li> 
+                                        <li><a href="IPD/ToDoTaskEntry.aspx">TO DO TASK DONE</a></li>   
+                                        <li><a href="IPD/DischargeAlert.aspx">DISCHARGE DASHBOARD</a></li>  
+                                        <li><a href="IPD/Discharge.aspx">DISCHARGE DETAILS</a></li>  
+                                      
+                                    </ul>
+                                </li>
+
+                                
+                                                <li><a href="#">OT INSTRUMENT</a>
+                                        <ul> 
+                                        <li><a href="IPD/OTInstruments.aspx">OT INSTRUMENT PURCHASE</a></li> 
+                                        <li><a href="IPD/OTInstrumentAMC.aspx">OT INSTRUMENT AMC</a></li>                                         
+                                        <li><a href="IPD/OTInstrumentRepair.aspx">OT INSTRUMENT REPAIR</a></li> 
+                                        <li><a href="IPD/RepairReceived.aspx">INSTRUMENT REPAIR RECEIVE</a></li>
+                                            <li><a href="IPD/OTInstrumentReject.aspx">OT INSTRUMENT REJECT</a></li> 
+                                        </ul>
+                                        </li>
+
+                                  <li><a href="#">OT MANAGEMENT</a>
+                                        <ul>
+                                                                                                                           
+                                             <li><a href="IPD/OTRequisition.aspx">OT REQUISITION</a></li> 
+                                            <li><a href="IPD/OTList.aspx">OT PATIENT LIST</a></li>
+                                            <li><a href="IPD/AnesthesiaNote.aspx">ANESTHESIA NOTE</a></li>  
+                                            <li><a href="IPD/OperationNote.aspx">OPERATION NOTE</a></li>
+                                            <li><a href="IPD/BiopsyNote.aspx">BIOPSY NOTE</a></li> 
+                                             <li><a href="IPD/OTConsumable.aspx">OT CONSUMABLES</a></li>
+                                            <li><a href="IPD/AttendenceFees.aspx">ATTENDEMCE FEES</a></li>  
+                                            <li><a href="IPD/InstrumentCost.aspx?type=T">OT INSTRUMENT COST</a></li>
+                                            <li><a href="IPD/DeliveryNote.aspx">DELIVERY NOTE</a></li>  
+                                        </ul>
+                                        </li>
+
+
+
+                                 <li><a href="#">GENERAL REPORTS</a>
+                                    <ul>
+                                               <li><a href="IPD/Allreport.aspx">ALL FORM</a></li> 
+                                    <li><a href="IPD/AdmissionFromReport.aspx">ADMISSION FORM</a></li>  
+                                       <li><a href="IPD/AdmissionSlip.aspx">ADMISSION SLIP</a></li>
+                                        <li><a href="IPD/ReferPatientList.aspx">PATIENT LIST</a></li>
+                                        <li><a href="IPD/CommissionReport.aspx">DOCTOR'S COMISSION</a></li> 
+                                           <li><a href="IPD/BHTRecordReport.aspx">BHT REPORT</a></li> 
+            	                        <li><a href="IPD/OperationConsentReport.aspx">OPERATION CONSENT</a></li>
+                	                    <li><a href="IPD/AborsonReport.aspx">MTP CONSENT</a></li>
+                                        <li><a href="IPD/LigationReport.aspx">LIGATION CONSENT</a></li>
+                                        <li><a href="IPD/OperationReportDetails.aspx">OPERTION DETAILS REPORT</a></li>
+                                        <li><a href="Bill/QuickBillReport.aspx">QUICK BILL DETAILS</a></li>  
+                                        <li><a href="Bill/DischargeBill.aspx">DISCHARGE BILL</a></li>  
+                                        <li><a href="Bill/BillGeneration.aspx">DISCHARGE BILL DETAILS</a></li>
+                                        <li><a href="IPD/DischargePatientList.aspx">DISCHARGE PATIENT LIST</a></li> 
+                                        <li><a href="Bill/MedicineBill.aspx">MEDICINE BILL DETAILS</a></li> 
+                                        <li><a href="IPD/InstrumentPurchaseReport.aspx">INSTRUMENT PURCHASE</a></li> 
+                                        <li><a href="IPD/InstrumentAMCReport.aspx">INSTRUMENT AMC</a></li> 
+                                        <li><a href="IPD/InsrtumentRepairReport.aspx">INSTRUMENT REPAIR</a></li> 
+                                        <li><a href="IPD/InstrumentRepairReceive.aspx">REPAIR RECEIVE</a></li> 
+                                        <li><a href="IPD/InstrumentRejectReport.aspx">INSTRUMENT REJECT</a></li>  
+
+                                        
+                                        
+                                        
+                                    </ul>
+                                </li>
+
+                                       <li><a href="#">HIGH RISK REPORTS</a>
+                                    <ul>
+                    	                <li><a href="IPD/HighRiskReport.aspx">HEART PATIENT</a></li>
+                                        <li><a href="IPD/EctopicPregnency.aspx">ECTOPIC PREGNENCY</a></li>
+                                        <li><a href="IPD/Eclamsia.aspx">ECLAMSIA</a></li>
+                                        <li><a href="IPD/PrematureBaby.aspx">PREMATURE BABY</a></li>
+                                        <li><a href="IPD/Septiceamia.aspx">SEPTICEAMIA</a></li>
+                                        <li><a href="IPD/NeonatalConvulsion.aspx">NEONATAL CONVULSION</a></li>
+                                        <li><a href="IPD/NeonatalHighFeverReport.aspx">NEONATAL HIGH FEVER</a></li>
+                                         <li><a href="IPD/NeonatalJaundiceReport.aspx">NEONATAL JAUNDICE</a></li>
+                                        <li><a href="IPD/StrokeReport.aspx">STROKE</a></li>
+                                         <li><a href="IPD/PPHReport.aspx">PPH</a></li>
+                                        <li><a href="IPD/NeoNatalphysia.aspx">NEONATAL ASPHYXIA</a></li>
+                                         <li><a href="IPD/APHReport.aspx">APH</a></li>
+                                        <li><a href="IPD/PIHReport.aspx">PIH</a></li>
+                                         <li><a href="IPD/PostOprative.aspx">POST OPERATIVE COMPLICATION</a></li>
+                                        <li><a href="IPD/BadOrthopadic.aspx">BAD ORTHOPAEDIC CASE</a></li>
+                                         <li><a href="IPD/PoisionIntake.aspx">POISION INTAKE</a></li>
+                                        <li><a href="IPD/BroChopReport.aspx">NEONATAL BROCHOPNEUMONIA</a></li>
+                                         <li><a href="IPD/SevererAnemiaREport.aspx">SEVERE ANEMIA</a></li>
+                                        <li><a href="IPD/ProlongAnesthecia.aspx">PROLONG ANESTHESIA</a></li>
+                                         <li><a href="IPD/OperativeriskOldman.aspx">OPERATIVE RISK IN OLD WOMAN</a></li>
+                                        
+                                           
+                                    </ul>
+                                </li>
+
+                                  <li><a href="#">CERTIFICATES</a>
+                                    <ul>
+                                               <li><a href="IPD/AdmissionReference.aspx">ADM.REF. CERTIFICATE</a></li>  
+                    	               <li><a href="IPD/DischargeCertificate.aspx">DISCHARGE CERTIFICATE</a></li> 
+                             
+                                       <li><a href="IPD/DischargeCertificateProvesional.aspx">PROV.DISCHARGE CERTIFICATE</a></li> 
+            	                        <li><a href="IPD/BirthCertificate.aspx">BIRTH CERTIFICATE</a></li>
+                                        <li><a href="IPD/BiopsyReport.aspx">BIOPSY REQUISITION</a></li>
+                                        
+                	                    <li><a href="IPD/DeathCertificate.aspx">DEATH CERTIFICATE</a></li>
+                                        <li><a href="IPD/SickCertificate.aspx">SICK</a></li>
+                                        <li><a href="IPD/FitCertificate.aspx">FITNESS</a></li>       
+                                        <li><a href="IPD/MoneyReceipt.aspx">MONEY RECEPT</a></li>     
+                                      
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li> --%>
+                        <li><a href="#">OPD UNIT</a>
+                            <ul>
+                                <li><a href="#">OPD MASTER</a>
+                                    <ul>
+                                        <%-- <li><a href="OPD/DoseMaster.aspx">DOSE MASTER</a></li> --%>
+                                        <li><a href="OPD/Complain.aspx">SYMPTOM MASTER</a></li>
+                                        <%--<li><a href="OPD/VaccinationMaster.aspx">VACCINATION MASTER</a></li>--%>
+                                        <li><a href="OPD/PrescriptionGroup.aspx">PRESCRIPTION GROUP MASTER</a></li>
+                                        <li><a href="OPD/PrescriptionTemplate.aspx">PRESCRIPTION TEMPLATE</a></li>
+                                        <li><a href="OPD/PrescriptionTemplate2.aspx">PRESCRIPTION TEMPLATE</a></li>
+                                        <li><a href="IPD/DoctorSpecialty.aspx">DOCTORS SPECIALITY</a></li>
+                                        <li><a href="IPD/DoctorType.aspx">DOCTOR TYPE</a></li>
+                                        <li><a href="IPD/doc_master.aspx">DOCTOR MASTER</a></li>
+                                        <%--<li><a href="OPD/DoctorHolidayMaster.aspx">DOCTOR'S HOLIDAY PLAN</a></li>
+                                        <li><a href="OPD/DoctorAvailability.aspx">DOCTOR'S AVAILABILITY</a></li>--%>
+                                    </ul>
+                                </li>
+
+                                <li><a href="#">TRANSACTION</a>
+                                    <ul>
+                                        <li><a href="OPD/PatientEnrollment.aspx">PATIENT REGISTRATION</a></li>
+                                        <%--<li><a href="OPD/PatientAppointment.aspx">PATIENT APPOINTMENT</a></li>--%>
+                                        <li><a href="OPD/PatientList.aspx">PATIENT LIST</a></li>
+                                        <li><a href="OPD/PatientPrescriptionEntry.aspx">PATIENT PRESCRIPTION ENTRY</a></li>
+                                        <%--<li><a href="OPD/ChargesDetail.aspx">CHARGE DETAILS</a></li>
+                                        <li><a href="OPD/PatientsDetails.aspx">PATIENT DETAILS</a></li>--%>
+                                    </ul>
+                                </li>
+
+
+                                <%--<li><a href="#">DOCTOR'S CHAMBER</a>
+                                    <ul>
+                                        
+                                        <li><a href="OPD/PatientEnrollment.aspx">PATIENT ENROLLMENT</a></li>
+                                        <li><a href="OPD/PatientList.aspx">PATIENT LIST</a></li>
+                                        <li><a href="OPD/PatientsDetails.aspx">PATIENT DETAILS</a></li>
+
+                                    </ul>
+                                </li>--%>
+
+                                <li><a href="#">REPORTS</a>
+                                    <ul>
+                                        <%--<li><a href="OPD/PrescriptionGateWay.aspx">PATIENT PRESCRIPTION</a></li>--%>
+                                        <li><a href="OPD/PatientQueue.aspx">PATIENT QUEUE LIST</a></li>
+                                        <li><a href="OPD/PatientHistoryReport.aspx">PATIENT HISTORY</a></li>
+                                        <li><a href="OPD/PatientInvoiceList.aspx">PATIENT INVOICE LIST</a></li>
+                                        <%--<li><a href="OPD/PerformingDocWiseMISReport.aspx">PERFORMING DOCTOR WISE MIS</a></li>--%>
+                                        <%--<li><a href="OPD/OPDBillSlip.aspx">PATIENT BillSlip</a></li>--%>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li><a href="#">DIALYSIS</a>
+                            <ul>
+                                <li><a href="#">MASTER</a>
+                                    <ul>
+                                        <li><a href="DayCare/ShiftDetails.aspx">SHIFT DETAILS</a></li>
+                                        <li><a href="DayCare/DialiserTypeMaster.aspx">DIALYSIS TYPE MASTER</a></li>
+                                        <li><a href="DayCare/DialysisCharge.aspx">DIALYSER NAME</a></li>
+                                        <li><a href="DayCare/ChemicalList.aspx">CHEMICAL LIST</a></li>
+                                        <li><a href="DayCare/DisposableList.aspx">DISPOSABLE LIST</a></li>
+                                        <li><a href="DayCare/ChemicalMapping.aspx">CHEMICAL MAPPING</a></li>
+                                        <li><a href="DayCare/DisposalMapping.aspx">DISPOSABLE MAPPING</a></li>
+
+                                    </ul>
+                                </li>
+
+                                <li><a href="#">TRANSACTION</a>
+                                    <ul>
+                                        <li><a href="DayCare/PatientReg.aspx">PATIENT REGISTRATION</a></li>
+                                        <li><a href="DayCare/PatientAppointment.aspx">PATIENT APPOINTMENT</a></li>
+                                        <li><a href="DayCare/DayCareCalender.aspx">CALENDER</a></li>
+                                        <li><a href="DayCare/AppoinmentList.aspx">APPOINTMENT LIST</a></li>
+                                        <li><a href="DayCare/PatientDashBoard.aspx">PATIENT DASHBOARD</a></li>
+                                        <li><a href="DayCare/ChargeSetails.aspx">CHARGE DETAILS</a></li>
+                                        <li><a href="DayCare/MedicineAdd.aspx">ADD MEDICINE </a></li>
+                                        <li><a href="DayCare/DialysisMonitoring.aspx">DIALISYS MONITORING</a></li>
+                                        <li><a href="DayCare/DialysisPayment.aspx">DIALISYS PAYMENT</a></li>
+                                        <li><a href="DayCare/DCDischarge.aspx">CHECK OUT</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">REPORTS</a>
+                                    <ul>
+
+                                        <li><a href="DayCare/DialysisSlip.aspx">DIALYSIS SLIP</a></li>
+                                        <li><a href="DayCare/BillSlip.aspx">BILL SLIP</a></li>
+                                        <li><a href="DayCare/MedicineBill.aspx">MEDICINE BILL</a></li>
+                                        <li><a href="DayCare/DialysisReportCard.aspx">DIALYSIS REPORT</a></li>
+                                        <li><a href="DayCare/PatientListSearch.aspx">REPORT ANALYSIS</a></li>
+                                        <li><a href="DayCare/MonitorReport.aspx">MONITORING REPORT</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+                        <li><a href="#">INVESTIGATION</a>
+
+                            <ul>
+                                <li style="font-weight: bold"><a href="#">MASTER</a>
+                                    <ul>
+                                        <li><a href="Pathology/DepartmentMaster.aspx">DEPARTMENT MASTER</a></li>
+                                        <li><a href="Pathology/ManufactureMaster.aspx">MANUFACTURER MASTER</a></li>
+                                        <%--<li><a href="Pathology/CompanyMaster.aspx">MANUFACTURING COMPANY</a></li>--%>
+                                        <li><a href="Pathology/SuppilierMaster.aspx">SUPPLIER MASTER</a></li>
+                                        <%--<li><a href="Pathology/ReagentMaster.aspx">REAGENT / KIT MASTER</a></li>--%>
+                                        <%--<li><a href="Pathology/SpecimanMaster.aspx">SAMPLE MASTER</a></li>--%>
+                                        <li><a href="Pathology/TestGroupMaster.aspx">INVESTIGATION GROUP MASTER</a></li>
+                                        <%--<li><a href="Pathology/TestMaster.aspx">INVESTIGATION MASTER</a></li>--%>
+                                        <li><a href="Pathology/TestMasterNew.aspx">INVESTIGATION MASTER</a></li>
+                                        <%--<li><a href="Pathology/ProfileMaster.aspx">TEST GROUP MASTER</a></li>--%>
+                                        <li><a href="Pathology/USGGroupMaster.aspx">USG GROUP MASTER</a></li>
+                                        <li><a href="Pathology/USGSubGroupMaster.aspx">USG SUB GROUP MASTER</a></li>
+                                        <li><a href="Pathology/USGNameMaster.aspx">USG NAME MASTER</a></li>
+                                        <li><a href="Pathology/USGHeaderMaster.aspx">USG HEADER MASTER</a></li>
+                                        <li><a href="Pathology/ReportTemplateMaster.aspx">REPORT TEMPLATE MASTER</a></li>
+
+                                    </ul>
+                                </li>
+
+                                <li><a href="#">TRANSACTION</a>
+                                    <ul>
+                                        <%--<li><a href="Pathology/PatientRequisitionOPD.aspx">INVESTIGATION REQUISITION OPD</a></li>
+                                        <li><a href="Pathology/PatientRequisition.aspx">INVESTIGATION REQUISITION</a></li>--%>
+                                        <li><a href="Pathology/PatientRequisitionList.aspx">REQUISITION LIST</a></li>
+                                        <%--<li><a href="Pathology/SampleCollection.aspx">SAMPLE COLLECTION</a></li>--%>
+                                        <%--<li><a href="Pathology/PatientRegistration.aspx">PATIENT REGISTRATION</a></li>--%>
+                                        <!--<li><a href="Pathology/ReagentOrder.aspx">REAGENT ORDER</a></li>-->
+                                        <%--<li><a href="Pathology/ReagentEntry.aspx">REAGENT ENTRY</a></li>--%>
+                                        <!--<li><a href="Pathology/ReagentRefund.aspx">REAGENT REFUND</a></li>-->
+                                        <li><a href="Pathology/TestResult.aspx">PATHOLOGY TEST RESULT</a></li>
+                                        <li><a href="Pathology/TestResultXRay.aspx">X-RAY TEST RESULT</a></li>
+                                        <li><a href="Pathology/TestResultRadiology.aspx">USG TEST RESULT</a></li>
+                                        <li><a href="Pathology/TestReagentMapping.aspx">TEST REAGENT MAP</a></li>
+                                        <li><a href="Pathology/RequisitionBill.aspx">REQUISITION BILL ENTRY</a></li>
+                                        <li><a href="Pathology/RequisitionBillCancel.aspx">BILL CANCELLATION ENTRY</a></li>
+                                        <li><a href="Pathology/ReqCancelBillApproval.aspx">BILL CANCELLATION APPROVAL</a></li>
+                                        <li><a href="Pathology/BillUpdate.aspx">BILL UPDATE</a></li>
+                                        <%--<li><a href="Pathology/SampleRequisitionBill.aspx">SAMPLE REQUISITION BILL ENTRY</a></li>--%>
+                                        <li><a href="Pathology/IssueConsumables.aspx">ISSUE CONSUMABLES</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">REPORTS</a>
+                                    <ul>
+                                        <%--<li><a href="Pathology/ReagentStockDetails.aspx">REAGENT STOCK DETAILS</a></li>
+                                        <li><a href="Pathology/LabRequisition_RePrint_Report.aspx">REPRINT LAB SLIP</a></li>--%>
+                                        <%--<li><a href="Pathology/CostPerTestReport.aspx">COST PER TEST</a></li>
+                                        <li><a href="Pathology/CostTestGroup.aspx">COST PER GROUP TEST</a></li>--%>
+                                        <%--<li><a href="Pathology/ExpiryAlertofReagentReport.aspx">EXPIRY ALERT</a></li>--%>
+                                        <li><a href="Pathology/TestDoneReport.aspx">TEST DONE</a></li>
+                                        <li><a href="Pathology/TestResultReport.aspx">TEST RESULT REPORT</a></li>
+                                        <li><a href="Pathology/Rep_InvestGrpwisecollection.aspx">Investigation Group wise Collection</a></li>
+                                        <%--<li><a href="Pathology/Rep_Investwisecollection.aspx">Investigation wise Collection</a></li>--%>
+
+                                    </ul>
+                                </li>
+
+                            </ul>
+
+                        </li>
+                        <li><a href="#">PHARMACY</a>
+                            <ul>
+
+                                <li><a href="#">MASTER</a>
+                                    <ul>
+                                        <li><a href="IPD/MedicineRoute.aspx">MEDICINE ROUTE</a></li>    
+                                        <li><a href="OPD/DoseMaster.aspx">DOSE MASTER</a></li> 
+                                        <li><a href="IPD/DurationMaster.aspx">DURATION MASTER</a></li>   
+                                        <%--  <li><a href="OPD/DoseMaster.aspx">DOSE MASTER</a></li> --%>
+                                        <li><a href="Pathology/SuppilierMaster.aspx">SUPPLIER MASTER</a></li>
+                                        <li><a href="Pathology/ManufactureMaster.aspx">MANUFACTURER MASTER</a></li>
+                                        <%--  <li><a href="Medicine/PotencyMaster.aspx">POTENCY MASTER</a></li>--%>
+                                        <li><a href="Medicine/MedicineGroup.aspx">MEDICINE GROUP</a></li>
+                                        <li><a href="Medicine/MedicineSubGroup.aspx">MEDICINE SUB GROUP</a></li>
+                                        <li><a href="Medicine/MedicineMaster.aspx">MEDICINE/REAGENT MASTER</a></li>
+
+                                    </ul>
+                                </li>
+
+                                <li><a href="#">TRANSACTION</a>
+                                    <ul>
+                                        <li><a href="Medicine/MedicineDashboard.aspx">MEDICINE/REAGENT DASHBOARD</a></li>
+                                        <li><a href="Medicine/PurchaseMedicine.aspx">MEDICINE/REAGENT PURCHASE </a></li>
+                                        <li><a href="Medicine/PurchaseService.aspx">SERVICE PURCHASE </a></li>
+                                        <!--<li><a href="Medicine/MedicineSellInsert.aspx">SELL PRICE</a></li>-->
+                                        <li><a href="Medicine/MedicineReturn.aspx">PURCHASE RETURN</a></li>
+                                        <li><a href="Medicine/MedicineSales.aspx">MEDICINE/REAGENT ISSUE</a></li>
+                                        <!--<li><a href="Medicine/MedicineSaleReturn.aspx">SALES RETURN</a></li>-->
+                                        <%--<li><a href="Medicine/MedicineStockAdj.aspx">MEDICINE/REAGENT STOCK ADJUSTMENT</a></li>--%>
+                                        <%--<li><a href="Medicine/ExportToExcel.aspx">EXPORT TO EXCEL</a></li>--%>
+                                        <li><a href="Medicine/ImportFromExcel.aspx">OPENING STOCK UPDATE</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">REPORTS</a>
+                                    <ul>
+                                        <%--<li><a href="Medicine/PurchaseInvoiceReport.aspx">INVOICE REPORT</a></li>
+                                        <li><a href="Medicine/InvoiceSellPriceDetailsReport.aspx">INVOICE SELL PRICE</a></li>
+                                        <li><a href="Medicine/MedicineReturnReport.aspx">MEDICINE/REAGENT RETURN</a></li>
+                                        <li><a href="Medicine/MedicineStockReport.aspx">MEDICINE/REAGENT STOCK</a></li>--%>
+                                        <li><a href="Medicine/ExpiryAlertReport.aspx">EXPIRY ALERT REPORT</a></li>
+                                        <li><a href="Medicine/ItemStockAlert.aspx">STOCK END REPORT</a></li>
+                                        <li><a href="Medicine/MedicineStockDetails.aspx">MEDICINE/REAGENT STOCK DETAILS</a></li>
+                                        <%--<li><a href="Medicine/WingWiseMedicineAllot.aspx">WING WISE MEDICINE ALLOCATION</a></li>--%>
+                                        <li><a href="Medicine/Rep_StockMovement.aspx">Stock Movement Register</a></li>
+                                        <li><a href="Medicine/Rep_StockLedger.aspx">Stock Ledger</a></li>
+                                        <li><a href="Medicine/Rep_StockValuation.aspx">Stock Valuation</a></li>
+
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li><a href="#">ACCOUNTS</a>
+                            <ul>
+                                <li><a href="#">MASTER</a>
+                                    <ul>
+                                        <%--<li><a href="Account/AnalysisMaster.aspx">ANALYSIS MASTER</a></li>
+                                        <li><a href="Account/CostCenter.aspx">COST CENTER</a></li>--%>
+                                        <li><a href="Medicine/MedicineGroup.aspx">LEDGER</a></li>
+                                    </ul>
+                                </li>
+
+                                <li><a href="#">TRANSACTION</a>
+                                    <ul>
+                                        <li><a href="Account/AnyTimePayment.aspx">ANYTIME PAYMENT</a></li>
+                                        <li><a href="Account/DoctorPaymentDashBoard.aspx">DOCTOR PAYMENT DASH BOARD</a></li>
+                                        <li><a href="Account/DoctorPayment.aspx">DOCTOR/REFERRER PAYMENT</a></li>
+                                        <li><a href="Account/DuePaymernt.aspx">BILL ADJUSTMENT</a></li>
+
+                                    </ul>
+                                </li>
+                                <li><a href="#">REPORTS</a>
+                                    <ul>
+                                        <%--<li><a href="Bill/DischargeBill.aspx">DISCHARGE BILL</a></li>
+                                        <li><a href="Bill/BillGeneration.aspx">DISCHARGE BILL DETAILS</a></li>
+                                        <li><a href="Bill/QuickBillReport.aspx">QUICK BILL DETAILS</a></li>
+                                        <li><a href="DayCare/BillSlip.aspx">DIALYSIS BILL</a></li>
+                                        <li><a href="IPD/MoneyReceipt.aspx">Money Receipt</a></li>
+                                        <li><a href="IPD/TotalIncome.aspx">Total Trunsaction</a></li>
+                                        <li><a href="Settings/DoctorPaymentReport.aspx">DOCTOR PAYMENT REPORT</a></li>--%>
+                                        <li><a href="Bill/DailyCollection.aspx">DAILY COLLECTION</a></li>
+                                        <li><a href="OPD/PerformingDocWiseMISReport.aspx">PERFORMING DOCTOR WISE MIS</a></li>
+                                        <li><a href="Bill/IVFPaymentStatus.aspx">IVF Payment Status</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <%-- <li><a href="#">SETTINGS</a>
+                           
+                            <ul>
+                               <li><a href="#">Information</a>
+                                    <ul>                                      
+                                       <li><a href="Settings/HospitalInformation.aspx">HOSPITAL INFORMATION</a></li>
+                              <li><a href="Settings/DesignationMaster.aspx">DESIGNATION MASTER</a></li>   
+                               <li><a href="Settings/EmployeeMaster.aspx">EMPLOYEE MASTER</a></li> 
+                                       <li><a href="Settings/AccountSetup.aspx">ACCOUNT SETUP</a></li>     
+                                    </ul>
+                                </li>
+
+                                     <li><a href="#">Reports</a>
+                                    <ul>                                      
+                                        <li><a href="Settings/HospitalsDetailsReport.aspx">HOSPITAL INFO REPORT</a></li> 
+                                        <li><a href="Settings/AdmissionRelatedReport.aspx">ADM. RELATED REPORT</a></li>
+                                        <li><a href="Settings/PatientOperationDetails.aspx">OT RELATED REPORT</a></li>  
+                                        <li><a href="Settings/MedicineInquiryReport.aspx">MEDICINE ENQ REPORT</a></li>       
+                                    </ul>
+                                </li>
+                	           
+                	        </ul>   
+                        </li>--%>
+                        <li><a href="#">SECURITY</a>
+
+                            <ul>
+                                <li><a href="#">USER RELATED INFO</a>
+                                    <ul>
+                                        <li><a href="Security/UserRole.aspx">USER ROLE</a></li>
+                                        <li><a href="Security/UserCreation.aspx">USER CREATION</a></li>
+                                        <li><a href="Security/ChangePassword.aspx">CHANGE PASSWORD</a></li>
+                                        <li><a href="Security/UserAction.aspx">USER ACTIONS</a></li>
+
+                                    </ul>
+                                </li>
+
+                                <li><a href="#">MENU RELATED INFO</a>
+                                    <ul>
+                                        <li><a href="Security/ModuleDetails.aspx">MODULE DETAILS</a></li>
+                                        <li><a href="Security/SubModuleDetails.aspx">SUB MODULE DETAILS</a></li>
+                                        <li><a href="Security/MenuDetails.aspx">MENU DETAILS</a></li>
+                                        <li><a href="Security/RoleWiseAccess.aspx">ROLE WISE ACCESS</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+
+                        </li>
+
+                        <%--<li><a href="#">QUERY</a>
+                            <ul>
+                                <li><a href="#">Item/Product Zoom</a>
+                                    <ul>
+                                        <li><a href="Query/MedicineZoom.aspx">Medicine Zoom</a></li>
+                                        <li><a href="#">Other than Medicine</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>--%>
+                        <li><a href="#">UTILITY</a>
+                            <ul>
+                                <li><a href="#">Data Consistency</a>
+                                    <ul>
+                                        <li><a href="Utility/DataConsistency.aspx" target="_blank">Data Consistenc</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">TOOLS</a>
+                                    <ul>
+                                        <li><a href="http://pathways.nice.org.uk/" target="_blank">Diagnostic Tools</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">REFERENCE BOOKS</a>
+                                    <ul>
+                                        <li><a href="http://www.softpedia.com/get/Others/E-Book/Desktop-Drug-Reference.shtml" target="_blank">Drag Reference Book -1</a></li>
+                                        <li><a href="https://sites.google.com/site/pharmaceuticalpractice/free-download-ebook-pharmaceutical/download-ebook-a-to-z-drug-information-facts---full-version" target="_blank">Drag Reference Book-2</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                    <%--  <asp:Literal ID="ltrReport" runat="server"></asp:Literal>--%>
+                    <div class="clear"></div>
+                </div>
+
+                <br />
+                <div class="inner-body-sec2">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="clear"></div>
+        <!-- Footer Section Start -->
+        <div id="footer">
+            <div class="wrapper-footer">
+                <p align="center">
+                    Ankuran - Care Compassion Cure : Kolkata -:- Helpline - 09876543210
+                    <%--<br />
+                    E-mail : gfchospital@gmail.com &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    Website : www.gfchospital.com--%>
+                </p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <%--    </ContentTemplate>
+    </asp:UpdatePanel>--%>
+    </form>
+</body>
+</html>
